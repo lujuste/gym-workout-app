@@ -21,6 +21,7 @@ const Button: React.FC<ButtonProps> = ({
       _pressed={{ bg: variant === "outline" ? "gray.500" : "green.300" }}
       borderWidth={variant === "outline" ? 1 : 0}
       borderColor={"green.500"}
+      {...rest}
     >
       <Text color="white" fontFamily={"heading"} fontSize={"sm"} rounded={"sm"}>
         {" "}

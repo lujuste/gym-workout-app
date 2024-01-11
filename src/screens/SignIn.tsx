@@ -5,20 +5,30 @@ import BackgroundImg from "@assets/background.png";
 import LogoSvg from "@assets/logo.svg";
 import Input from "../components/Input";
 import Button from "../components/Button";
+import { useNavigation } from "@react-navigation/native";
+import { AuthNavigatorRoutesProps } from "../routes/auth.routes";
 // import { Container } from './styles';
 
 const SignIn: React.FC = () => {
+  const navigation = useNavigation<AuthNavigatorRoutesProps>();
+
+  const handleNewAcc = () => {
+    console.log("chamou!");
+    navigation.navigate("signUp");
+  };
+
   return (
     <ScrollView
       contentContainerStyle={{ flexGrow: 1 }}
       showsHorizontalScrollIndicator={false}
     >
-      <VStack px={10} bg="gray.700" flex={1}>
+      <VStack px={10} flex={1}>
         <Image
           alt="pessoas treinando"
           source={BackgroundImg}
           resizeMode="contain"
           position={"absolute"}
+          defaultSource={BackgroundImg}
         />
 
         <Center my={24}>
@@ -46,7 +56,13 @@ const SignIn: React.FC = () => {
           <Text color="gray.100" fontSize="sm" mb={3} fontFamily={"body"}>
             Ainda nao tem acesso?
           </Text>
-          <Button title="Criar conta" variant={"outline"} />
+          <Button
+            onPress={() => {
+              handleNewAcc();
+            }}
+            title="Criar conta"
+            variant={"outline"}
+          />
         </Center>
       </VStack>
     </ScrollView>
