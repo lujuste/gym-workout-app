@@ -2,6 +2,7 @@ import { Center, FlatList, HStack, Heading, Text, VStack } from "native-base";
 import React, { useState } from "react";
 import HomeHeader from "../components/HomeHeader";
 import Group from "../components/Group";
+import ExerciseCard from "../components/ExerciseCard";
 
 // import { Container } from './styles';
 
@@ -41,6 +42,9 @@ const Home: React.FC = () => {
             4
           </Text>
         </HStack>
+
+        <ExerciseCard />
+        <ExerciseCard />
       </VStack>
     </VStack>
   );

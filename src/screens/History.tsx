@@ -1,13 +1,14 @@
-import { Center, Text } from "native-base";
+import { Center, Text, VStack } from "native-base";
 import React from "react";
+import HeaderScreen from "../components/HeaderScreen";
 
 // import { Container } from './styles';
 
 const History: React.FC = () => {
   return (
-    <Center flex={1}>
-      <Text>History</Text>
-    </Center>
+    <VStack flex={1}>
+      <HeaderScreen title="Historico de Exercicios" />
+    </VStack>
   );
 };
 
