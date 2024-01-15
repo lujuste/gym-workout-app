@@ -3,10 +3,16 @@ import React, { useState } from "react";
 import HomeHeader from "../components/HomeHeader";
 import Group from "../components/Group";
 import ExerciseCard from "../components/ExerciseCard";
+import { useNavigation } from "@react-navigation/native";
+import { AppNavigatorRoutesProps } from "../routes/app.routes";
 
 // import { Container } from './styles';
 
 const Home: React.FC = () => {
+  const [exercises, setExercises] = useState([
+    "Remada unilateral",
+    "Remada curvada",
+  ]);
   const [groupSelected, setGroupSelected] = useState("costa");
   const [groups, setGroups] = useState([
     "Costas",
@@ -14,6 +20,13 @@ const Home: React.FC = () => {
     "Biceps",
     "Triceps",
   ]);
+
+  const navigation = useNavigation<AppNavigatorRoutesProps>();
+
+  const handleOpenExerciseDetails = () => {
+    navigation.navigate("exercise");
+  };
+
   return (
     <VStack flex={1}>
       <HomeHeader />
@@ -39,12 +52,19 @@ const Home: React.FC = () => {
             Exercicios
           </Heading>
           <Text color="gray.200" fontSize={"sm"}>
-            4
+            {exercises?.length}
           </Text>
         </HStack>
-
-        <ExerciseCard />
-        <ExerciseCard />
+        <FlatList
+          data={exercises}
+          keyExtractor={(item) => item}
+          renderItem={({ item }) => (
+            <ExerciseCard onPress={handleOpenExerciseDetails} />
+          )}
+          showsVerticalScrollIndicator={false}
+          _contentContainerStyle={{ paddingBottom: 20 }}
+        />
+        {/* <ExerciseCard onPress={handleOpenExerciseDetails} /> */}
       </VStack>
     </VStack>
   );

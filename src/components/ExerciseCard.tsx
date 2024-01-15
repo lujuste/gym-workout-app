@@ -26,7 +26,7 @@ const ExerciseCard: React.FC<Props> = ({ ...rest }) => {
           rounded={"md"}
           alt="img"
           mr={4}
-          resizeMode="center"
+          resizeMode="cover"
         />
 
         <VStack flex={1}>
